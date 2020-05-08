@@ -3,6 +3,7 @@ package com.myapplicationdev.android.demoimplicitintent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
 
     Button btnEmail;
+    Button btnRP;
     EditText editTextMessage;
 
     @Override
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTextMessage = (EditText) findViewById(R.id.editTextMessage);
         btnEmail = (Button) findViewById(R.id.buttonEmail);
+        btnRP = (Button) findViewById(R.id.buttonRP);
 
         btnEmail.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -42,5 +45,17 @@ public class MainActivity extends AppCompatActivity {
                         "Choose an Email client :"));
 
             }});
+
+        btnRP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                // Intent to display data
+                Intent rpIntent = new Intent(Intent.ACTION_VIEW);
+                // Set the URL to be used.
+                rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
+                startActivity(rpIntent);
+
+                }
+        });
     }
 }
